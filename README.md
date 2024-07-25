@@ -1,1 +1,29 @@
-# ECUST-dorm-electricity-monitor
+# Chinese Simplified/简体中文
+### 请注意，该脚本尚在开发阶段，功能尚不完善
+### 请注意，该脚本由AppleScript编写，需要macOS运行环境
+
+已实现功能：
+1. 搭配automator实现每日自动检测剩余电量
+2. 在剩余电量低于7度时发邮件提醒
+
+**初次**使用方法：
+1. 进入华理信息门户的校园卡充值页面ykt.ecust.edu.cn，按照要求登录
+2. 在我的应用界面点击电费转账
+3. 点击华理电控
+4. 选择自己宿舍
+5. 打开开发者模式(对于Safari浏览器，先按下Cmd+, 打开偏好设置，在高级选项卡下勾选显示网页开发者功能)
+6. 按下Cmd+Shift+C，将鼠标挪至“缴费校区”下拉选框上，点按
+7. 页面下方会弹出一堆代码，其中一行代码以浅灰色高亮显示，点按改行代码最左侧的三角形
+8. 此时你应该会看到弹出了三行新代码：
+`<option value="2">奉贤校区</option>`
+`<option value="3">徐汇校区</option>`
+`<option value="104">商业中心</option>`
+其中的“value”为每个校区的唯一标识符
+9. 对缴费区域、楼栋、房间依次执行上述操作，并将获得的Value依次填入代码的BUILDINGNUMBER, ELCFLOORVALUE, ROOMBUMBER，**请务必保留单引号**
+10. 在代码倒数几行内找到RECEIVER@example.com, 将其替换成自己的邮箱
+
+以上设置完成后，以后直接运行脚本即可执行检测，或可搭配自动化使用。
+
+未来更新：
+1. Java重构代码，使windows兼容
+2. 搭建server，提供每日检测自动提醒服务
